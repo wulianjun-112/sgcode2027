@@ -62,7 +62,14 @@ class CustomDataset(Dataset):
                  seg_prefix=None,
                  proposal_file=None,
                  test_mode=False,
-                 filter_empty_gt=True):
+                 filter_empty_gt=True,
+                 sub_ann='Annotations', 
+                 sub_jpg='JPEGImages',
+                 extra_jpg='JPEGImages'):
+
+        self.sub_ann = sub_ann
+        self.sub_jpg = sub_jpg
+        self.extra_jpg = extra_jpg
         self.ann_file = ann_file
         self.data_root = data_root
         self.img_prefix = img_prefix
@@ -73,6 +80,7 @@ class CustomDataset(Dataset):
         self.CLASSES = self.get_classes(classes)
 
         # join paths if data_root is specified
+
         if self.data_root is not None:
             if not osp.isabs(self.ann_file):
                 self.ann_file = osp.join(self.data_root, self.ann_file)
@@ -93,6 +101,9 @@ class CustomDataset(Dataset):
             self.proposals = None
 
         # filter images too small and containing no annotations
+
+        
+
         if not test_mode:
             valid_inds = self._filter_imgs()
             self.data_infos = [self.data_infos[i] for i in valid_inds]

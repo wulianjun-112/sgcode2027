@@ -12,7 +12,7 @@ from .transforms import (bbox2distance, bbox2result, bbox2roi,
                          bbox_cxcywh_to_xyxy, bbox_flip, bbox_mapping,
                          bbox_mapping_back, bbox_rescale, bbox_xyxy_to_cxcywh,
                          distance2bbox, roi2bbox)
-
+from .ensemble_boxes_wbf import weighted_boxes_fusion
 __all__ = [
     'bbox_overlaps', 'BboxOverlaps2D', 'BaseAssigner', 'MaxIoUAssigner',
     'AssignResult', 'BaseSampler', 'PseudoSampler', 'RandomSampler',
@@ -23,5 +23,5 @@ __all__ = [
     'build_bbox_coder', 'BaseBBoxCoder', 'PseudoBBoxCoder',
     'DeltaXYWHBBoxCoder', 'TBLRBBoxCoder', 'CenterRegionAssigner',
     'bbox_rescale', 'bbox_cxcywh_to_xyxy', 'bbox_xyxy_to_cxcywh',
-    'RegionAssigner'
+    'RegionAssigner','weighted_boxes_fusion'
 ]

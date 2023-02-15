@@ -312,7 +312,7 @@ class Res2Net(ResNet):
         self.base_width = base_width
         super(Res2Net, self).__init__(
             style='pytorch',
-            deep_stem=True,
+            deep_stem=deep_stem,
             avg_down=True,
             pretrained=pretrained,
             init_cfg=init_cfg,

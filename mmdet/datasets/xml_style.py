@@ -23,6 +23,7 @@ class XMLDataset(CustomDataset):
         assert self.CLASSES or kwargs.get(
             'classes', None), 'CLASSES in `XMLDataset` can not be None.'
         super(XMLDataset, self).__init__(**kwargs)
+        
         self.cat2label = {cat: i for i, cat in enumerate(self.CLASSES)}
         self.min_size = min_size
 
@@ -39,8 +40,12 @@ class XMLDataset(CustomDataset):
         data_infos = []
         img_ids = mmcv.list_from_file(ann_file)
         for img_id in img_ids:
-            filename = f'JPEGImages/{img_id}.jpg'
-            xml_path = osp.join(self.img_prefix, 'Annotations',
+            
+            if not osp.exists(osp.join(self.img_prefix, self.sub_jpg,'{}.jpg'.format(img_id))):
+                filename = f'{self.extra_jpg}/{img_id}.jpg'
+            else:
+                filename = f'{self.sub_jpg}/{img_id}.jpg'
+            xml_path = osp.join(self.img_prefix, self.sub_ann,
                                 f'{img_id}.xml')
             tree = ET.parse(xml_path)
             root = tree.getroot()
@@ -49,7 +54,7 @@ class XMLDataset(CustomDataset):
                 width = int(size.find('width').text)
                 height = int(size.find('height').text)
             else:
-                img_path = osp.join(self.img_prefix, 'JPEGImages',
+                img_path = osp.join(self.img_prefix, self.sub_jpg,
                                     '{}.jpg'.format(img_id))
                 img = Image.open(img_path)
                 width, height = img.size
@@ -66,7 +71,7 @@ class XMLDataset(CustomDataset):
                 continue
             if self.filter_empty_gt:
                 img_id = img_info['id']
-                xml_path = osp.join(self.img_prefix, 'Annotations',
+                xml_path = osp.join(self.img_prefix, self.sub_ann,
                                     f'{img_id}.xml')
                 tree = ET.parse(xml_path)
                 root = tree.getroot()
@@ -90,7 +95,7 @@ class XMLDataset(CustomDataset):
         """
 
         img_id = self.data_infos[idx]['id']
-        xml_path = osp.join(self.img_prefix, 'Annotations', f'{img_id}.xml')
+        xml_path = osp.join(self.img_prefix, self.sub_ann, f'{img_id}.xml')
         tree = ET.parse(xml_path)
         root = tree.getroot()
         bboxes = []
@@ -157,7 +162,7 @@ class XMLDataset(CustomDataset):
 
         cat_ids = []
         img_id = self.data_infos[idx]['id']
-        xml_path = osp.join(self.img_prefix, 'Annotations', f'{img_id}.xml')
+        xml_path = osp.join(self.img_prefix, self.sub_ann, f'{img_id}.xml')
         tree = ET.parse(xml_path)
         root = tree.getroot()
         for obj in root.findall('object'):

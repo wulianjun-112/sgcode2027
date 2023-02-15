@@ -21,6 +21,39 @@ except ImportError:
     albumentations = None
     Compose = None
 
+import cv2
+
+def show_img_with_gt(img,bboxes):
+    bboxes = bboxes.astype(np.int32).tolist()
+    for box in bboxes:
+        img = cv2.rectangle(img,(box[0],box[1]),(box[2],box[3]),(0,0,0),4)
+    cv2.imwrite('./show_gt.jpg',img)
+
+# @PIPELINES.register_module()
+# class LoadMosaic:
+#     def __init__(self,
+#                  img_scale,
+#                  ratio=1.0,
+#                  k=4,
+#                  min_crop_size=0.3,
+#                  min_ious=(0.1, 0.3, 0.5, 0.7, 0.9)
+#                  ):
+#         self.img_scale = img_scale
+#         self.ratio = ratio
+#         self.k = k
+#         assert k == 4,"k=9 is NotImplemented."
+#         self.min_crop_size = min_crop_size
+#         self.min_ious = min_ious
+
+#     def __call__(self,results):
+
+#         if results['img_shape'][1] >= self.img_scale[0] * (1- self.min_crop_size) or \
+#            results['img_shape'][0] >= self.img_scale[1] * (1- self.min_crop_size) or \
+#             random.random() >= self.ratio:
+#             return results
+        
+#         MIRC = MinIoURandomCrop(self.min_ious,self.min_crop_size)
+
 
 @PIPELINES.register_module()
 class Resize:
@@ -1132,7 +1165,7 @@ class MinIoURandomCrop:
             'gt_bboxes_ignore': 'gt_masks_ignore'
         }
 
-    def __call__(self, results):
+    def __call__(self, results,new_hw=None):
         """Call function to crop images and bounding boxes with minimum IoU
         constraint.
 
@@ -1219,6 +1252,8 @@ class MinIoURandomCrop:
                 img = img[patch[1]:patch[3], patch[0]:patch[2]]
                 results['img'] = img
                 results['img_shape'] = img.shape
+                # from pdb import set_trace
+                # set_trace()
 
                 # seg fields
                 for key in results.get('seg_fields', []):

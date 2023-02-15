@@ -55,6 +55,7 @@ model = dict(
             loss_bbox=dict(type='L1Loss', loss_weight=1.0))),
     # model training and testing settings
     train_cfg=dict(
+        moasic=dict(k=0),
         rpn=dict(
             assigner=dict(
                 type='MaxIoUAssigner',

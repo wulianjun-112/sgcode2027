@@ -64,15 +64,25 @@ def train_detector(model,
                 f'{cfg.data.imgs_per_gpu} in this experiments')
         cfg.data.samples_per_gpu = cfg.data.imgs_per_gpu
 
+    train_dataloader_default_args = dict(
+        samples_per_gpu=cfg.data.samples_per_gpu,
+        workers_per_gpu=cfg.data.workers_per_gpu,
+        # `num_gpus` will be ignored if distributed
+        num_gpus=len(cfg.gpu_ids),
+        dist=distributed,
+        seed=cfg.seed,
+        persistent_workers=False)
+
+    train_loader_cfg = {
+        **train_dataloader_default_args,
+        **cfg.data.get('train_dataloader', {},),
+        'class_aware_sampler':cfg.data.get('class_aware_sampler', None,),
+    }
+    
     data_loaders = [
         build_dataloader(
             ds,
-            cfg.data.samples_per_gpu,
-            cfg.data.workers_per_gpu,
-            # cfg.gpus will be ignored if distributed
-            len(cfg.gpu_ids),
-            dist=distributed,
-            seed=cfg.seed) for ds in dataset
+            **train_loader_cfg) for ds in dataset
     ]
 
     # build optimizer

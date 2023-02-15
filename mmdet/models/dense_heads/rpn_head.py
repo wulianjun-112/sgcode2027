@@ -8,7 +8,7 @@ from mmcv.runner import force_fp32
 
 from ..builder import HEADS
 from .anchor_head import AnchorHead
-
+from mmdet.core.bbox.ensemble_boxes_wbf import weighted_boxes_fusion
 
 @HEADS.register_module()
 class RPNHead(AnchorHead):
@@ -217,6 +217,21 @@ class RPNHead(AnchorHead):
                 scores = scores[valid_mask]
                 ids = ids[valid_mask]
         if proposals.numel() > 0:
+            
+            # boxes_all, scores_all = [],[]
+            # img_shape_tensor = torch.tensor([img_shape[1],img_shape[0],img_shape[1],img_shape[0]]).to(proposals.device)
+            # for id in ids.unique():
+            #     boxes_i, scores_i, _ = weighted_boxes_fusion([proposals[ids==id]/img_shape_tensor], [scores[ids==id]], [(scores[ids==id]<0).long()], weights=None, iou_thr=0.5, skip_box_thr=0.0001)
+            #     boxes_all.append(torch.from_numpy(boxes_i).to(proposals.device)*img_shape_tensor)
+            #     scores_all.append(torch.from_numpy(scores_i).to(proposals.device))
+
+            # scores_all = torch.cat(scores_all)
+            # boxes_all = torch.cat(boxes_all)
+            # scores_, inds = scores_all.sort(descending=True)
+            # boxes_all = boxes_all[inds]
+            # dets_wbf = torch.hstack([boxes_all,scores_.unsqueeze(-1)])
+            # dets = dets_wbf.float()
+
             dets, keep = batched_nms(proposals, scores, ids, cfg.nms)
         else:
             return proposals.new_zeros(0, 5)

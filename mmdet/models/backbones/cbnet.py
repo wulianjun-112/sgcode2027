@@ -134,6 +134,7 @@ class _CBNet(BaseModule):
 class _CBResNet(_CBNet):
     def __init__(self, net, cb_inplanes, cb_zero_init=True, cb_del_stages=0, **kwargs):
         super(_CBResNet, self).__init__()
+        # import pdb;pdb.set_trace()
         self.cb_zero_init = cb_zero_init
         self.cb_del_stages = cb_del_stages
 

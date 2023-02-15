@@ -2,7 +2,8 @@ import torch
 from mmcv.ops.nms import batched_nms
 
 from mmdet.core.bbox.iou_calculators import bbox_overlaps
-
+from mmdet.core.bbox.ensemble_boxes_wbf import weighted_boxes_fusion
+import numpy as np
 
 def multiclass_nms(multi_bboxes,
                    multi_scores,
@@ -81,6 +82,18 @@ def multiclass_nms(multi_bboxes,
             return dets, labels, inds
         else:
             return dets, labels
+
+
+    # boxes_wbf, scores_wbf, labels_wbf = weighted_boxes_fusion([bboxes/bboxes.max()], [scores], [labels], weights=None, iou_thr=0.5, skip_box_thr=0.0001)
+    # boxes_wbf = torch.from_numpy(boxes_wbf).to(bboxes.device) * bboxes.max() 
+    # scores_wbf = torch.from_numpy(scores_wbf).to(bboxes.device)
+    # dets_wbf = torch.hstack([boxes_wbf,scores_wbf.unsqueeze(-1)])
+    # dets = dets_wbf.float()
+    # labels = torch.from_numpy(labels_wbf).to(bboxes.device).long()
+    # if max_num > 0:
+    #     dets = dets[:max_num]
+    #     labels = labels[:max_num]
+    # return dets, labels
 
     dets, keep = batched_nms(bboxes, scores, labels, nms_cfg)
 

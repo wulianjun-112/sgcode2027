@@ -201,6 +201,16 @@ class _TwoStageDetector(BaseDetector):
         return self.roi_head.onnx_export(x, proposals, img_metas)
 
 
+import cv2
+import numpy as np
+import math
+def show_img_with_gt(img,bboxes,i,name=1):
+    bboxes = bboxes.astype(np.int32).tolist()
+    for box in bboxes:
+        img = cv2.rectangle(img,(box[0],box[1]),(box[2],box[3]),(0,0,0),4)
+    cv2.imwrite('./show_gt{}_{}.jpg'.format(name,i),img)
+
+
 @DETECTORS.register_module()
 class TwoStageDetector(_TwoStageDetector):
     """Base class for two-stage detectors.
@@ -219,6 +229,53 @@ class TwoStageDetector(_TwoStageDetector):
                       proposals=None,
                       loss_weights=None,
                       **kwargs):
+        
+        # for i,(img_i,gt_bboxes_i,img_metas_i) in enumerate(zip(img,gt_bboxes,img_metas)):
+        #     img_shape = img_metas_i['img_shape']
+        #     img_i = np.array(img_i[:,:img_shape[0],:img_shape[1]].cpu()).transpose((1,2,0)) * img_metas_i['img_norm_cfg']['std'] + img_metas_i['img_norm_cfg']['mean']
+        #     img_i = np.ascontiguousarray(img_i.astype(np.uint8))
+        #     gt_bboxes_i = np.array(gt_bboxes_i.cpu())
+            
+        #     show_img_with_gt(img_i,gt_bboxes_i,i)
+
+        if 'moasic' in self.train_cfg:
+            num = self.train_cfg['moasic']['k']
+            if num >0:
+                assert len(img) % num == 0 and math.sqrt(num) - int(math.sqrt(num)) == 0
+                img_moasic = torch.zeros((len(img) // num,3,img.shape[-2]*2,img.shape[-1]*2),dtype=img.dtype).to(img.device)
+                gt_bboxes_moasic=[]
+                gt_labels_moasic=[]
+                img_metas_moasic=[]
+                num_img_m = len(img) // num
+                num_img_p = int(math.sqrt(num))
+                for q in range(num_img_m):
+                    gt_bboxes_m = []
+                    gt_labels_m = []
+                    for i in range(num_img_p):
+                        for j in range(num_img_p):
+                            img_moasic[q,:,i*img.shape[-2]:(i+1)*img.shape[-2],j*img.shape[-1]:(j+1)*img.shape[-1]] = img[q*num+i*num_img_p+j,:,:,:]
+                            gt_bboxes_m.extend(gt_bboxes[q*num+i*num_img_p+j] + torch.tensor([j*img.shape[-1],i*img.shape[-2],j*img.shape[-1],i*img.shape[-2]]).to(img.device))
+                            gt_labels_m.extend(gt_labels[q*num+i*num_img_p+j])
+                    gt_bboxes_m = torch.stack(gt_bboxes_m)
+                    gt_labels_m = torch.stack(gt_labels_m)
+                    gt_bboxes_moasic.append(gt_bboxes_m)
+                    gt_labels_moasic.append(gt_labels_m)
+
+                    img_metas_i = img_metas[q]
+                    img_metas_i['img_shape'] = img_metas_i['pad_shape'] = (img_moasic.shape[-2],img_moasic.shape[-1],3)
+                    img_metas_moasic.append(img_metas_i)
+                    img_i = img_moasic[q]
+                    img_i = np.array(img_i.cpu()).transpose((1,2,0)) * img_metas_i['img_norm_cfg']['std'] + img_metas_i['img_norm_cfg']['mean']
+                    img_i = np.ascontiguousarray(img_i.astype(np.uint8))
+                    gt_bboxes_i = np.array(gt_bboxes_m.cpu())
+                    show_img_with_gt(img_i,gt_bboxes_i,q,name=2)
+                
+                img = img_moasic
+                gt_bboxes = gt_bboxes_moasic
+                gt_labels = gt_labels_moasic
+                img_metas = img_metas_moasic
+
+
         xs = self.extract_feat(img)
 
         if not isinstance(xs[0], (list, tuple)):
@@ -253,8 +310,8 @@ class TwoStageDetector(_TwoStageDetector):
                     gt_labels=None,
                     gt_bboxes_ignore=gt_bboxes_ignore,
                     proposal_cfg=proposal_cfg)
-                if len(xs) > 1:
-                    rpn_losses = upd_loss(rpn_losses, idx=i, weight=loss_weights[i])
+                # if len(xs) > 1:
+                #     rpn_losses = upd_loss(rpn_losses, idx=i, weight=loss_weights[i])
                 losses.update(rpn_losses)
         else:
             proposal_list = proposals
@@ -264,8 +321,8 @@ class TwoStageDetector(_TwoStageDetector):
                                                     gt_bboxes, gt_labels,
                                                     gt_bboxes_ignore, gt_masks,
                                                     **kwargs)
-            if len(xs) > 1:
-                roi_losses = upd_loss(roi_losses, idx=i, weight=loss_weights[i])                            
+            # if len(xs) > 1:
+            #     roi_losses = upd_loss(roi_losses, idx=i, weight=loss_weights[i])                            
             losses.update(roi_losses)
 
         return losses
