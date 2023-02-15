@@ -271,7 +271,9 @@ def eval_map(det_results,
              dataset=None,
              logger=None,
              tpfp_fn=None,
-             nproc=4):
+             nproc=4,
+             score_fliter=None
+             ):
     """Evaluate mAP of a dataset.
 
     Args:
@@ -317,6 +319,9 @@ def eval_map(det_results,
 
     pool = Pool(nproc)
     eval_results = []
+    tps = []
+    fps = []
+    num_gts_all = []
     for i in range(num_classes):
         # get gt and det bboxes of this class
         cls_dets, cls_gts, cls_gts_ignore = get_cls_results(
@@ -352,6 +357,8 @@ def eval_map(det_results,
                                          & (gt_areas < max_area))
         # sort all det bboxes by score, also sort tp and fp
         cls_dets = np.vstack(cls_dets)
+        # if score_fliter is not None:
+        #     cls_dets = cls_dets[cls_dets[:,-1]>score_fliter]
         num_dets = cls_dets.shape[0]
         sort_inds = np.argsort(-cls_dets[:, -1])
         tp = np.hstack(tp)[:, sort_inds]
@@ -359,9 +366,14 @@ def eval_map(det_results,
         # calculate recall and precision with tp and fp
         tp = np.cumsum(tp, axis=1)
         fp = np.cumsum(fp, axis=1)
+        tps.append(tp[0,-1])
+        fps.append(fp[0,-1])
+        num_gts_all.append(num_gts)
         eps = np.finfo(np.float32).eps
         recalls = tp / np.maximum(num_gts[:, np.newaxis], eps)
         precisions = tp / np.maximum((tp + fp), eps)
+        
+
         # calculate AP
         if scale_ranges is None:
             recalls = recalls[0, :]
@@ -394,6 +406,17 @@ def eval_map(det_results,
             if cls_result['num_gts'] > 0:
                 aps.append(cls_result['ap'])
         mean_ap = np.array(aps).mean().item() if aps else 0.0
+
+    scores = sum(tps)/sum(num_gts_all) * 0.6
+
+    W_list = np.array([0,1,2,3,5,10])
+    W_scores = np.array([0.3,0.25,0.2,0.1,0.05,0])
+    W = (sum(fps) - sum(tps)) / sum(num_gts_all)
+    scores += W_scores[W > W_list].min()
+    scores *= 100
+
+    print(scores)
+
 
     print_map_summary(
         mean_ap, eval_results, dataset, area_ranges, logger=logger)

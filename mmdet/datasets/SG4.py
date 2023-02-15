@@ -43,7 +43,7 @@ class SG4(XMLDataset):
                  metric='mAP',
                  logger=None,
                  proposal_nums=(100, 300, 1000),
-                 iou_thr=0.2,
+                 iou_thr=0.5,
                  scale_ranges=None):
         """Evaluate in VOC protocol.
 
@@ -95,7 +95,8 @@ class SG4(XMLDataset):
                     scale_ranges=None,
                     iou_thr=iou_thr,
                     dataset=ds_name,
-                    logger=logger)
+                    logger=logger,
+                    score_fliter=0.3)
                 mean_aps.append(mean_ap)
                 eval_results[f'AP{int(iou_thr * 100):02d}'] = round(mean_ap, 3)
             eval_results['mAP'] = sum(mean_aps) / len(mean_aps)
@@ -272,8 +273,8 @@ class SG4(XMLDataset):
 
         data_infos = []
         img_ids = mmcv.list_from_file(ann_file)
-        par = tqdm(img_ids)
-        for img_id in par:
+        # par = tqdm(img_ids)
+        for img_id in img_ids:
             
             if not osp.exists(osp.join(self.img_prefix, self.sub_jpg,'{}.jpg'.format(img_id))):
                 filename = f'{self.extra_jpg}/{img_id}.jpg'

@@ -21,8 +21,10 @@ def single_gpu_test(model,
     model.eval()
     results = []
     dataset = data_loader.dataset
-    prog_bar = mmcv.ProgressBar(len(dataset))
+    # prog_bar = mmcv.ProgressBar(len(dataset))
+    print("Loading Finished\n")
     for i, data in enumerate(data_loader):
+        print("process:{}/{} {}".format(i+1,len(dataset),osp.basename(data['img_metas'][0].data[0][0]['filename'])))
         with torch.no_grad():
             result = model(return_loss=False, rescale=True, **data)
 
@@ -60,9 +62,8 @@ def single_gpu_test(model,
             result = [(bbox_results, encode_mask_results(mask_results))
                       for bbox_results, mask_results in result]
         results.extend(result)
-
-        for _ in range(batch_size):
-            prog_bar.update()
+        # for _ in range(batch_size):
+            # prog_bar.update()
     return results
 
 

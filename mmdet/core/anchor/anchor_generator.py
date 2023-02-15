@@ -320,8 +320,8 @@ class AnchorGenerator:
                 are the sizes of the corresponding feature level, \
                 num_base_anchors is the number of anchors for that level.
         """
-        warnings.warn('``grid_anchors`` would be deprecated soon. '
-                      'Please use ``grid_priors`` ')
+        # warnings.warn('``grid_anchors`` would be deprecated soon. '
+        #               'Please use ``grid_priors`` ')
 
         assert self.num_levels == len(featmap_sizes)
         multi_level_anchors = []
@@ -356,9 +356,9 @@ class AnchorGenerator:
             torch.Tensor: Anchors in the overall feature maps.
         """
 
-        warnings.warn(
-            '``single_level_grid_anchors`` would be deprecated soon. '
-            'Please use ``single_level_grid_priors`` ')
+        # warnings.warn(
+        #     '``single_level_grid_anchors`` would be deprecated soon. '
+        #     'Please use ``single_level_grid_priors`` ')
 
         # keep featmap_size as Tensor instead of int, so that we
         # can covert to ONNX correctly
