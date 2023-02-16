@@ -106,7 +106,8 @@ def parse_args():
 
 def main():
     args = parse_args()
-
+    from pdb import set_trace
+    set_trace()
     assert args.out or args.eval or args.format_only or args.show \
         or args.show_dir, \
         ('Please specify at least one operation (save/eval/format/show the '

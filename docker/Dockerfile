@@ -10,7 +10,7 @@ ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 ENV MODEL_TYPES="00,01"
 ENV NMS="0.6"
 ENV SCORE="0.3"
-
+ENV NUM="100"
 
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
@@ -25,8 +25,8 @@ RUN pip install mmcv-full==1.3.8 -f https://download.openmmlab.com/mmcv/dist/cu1
 # Install MMDetection
 RUN conda clean --all
 # RUN git clone https://github.com/open-mmlab/mmdetection.git /mmdetection
-RUN git clone https://github.com/wulianjun-112/sg_code.git /CBNetV2
-WORKDIR /CBNetV2
+RUN git clone https://github.com/wulianjun-112/sgcode2027.git /sgcode
+WORKDIR /sgcode
 ENV FORCE_CUDA="1"
 RUN pip install -r requirements/build.txt
 RUN pip install --no-cache-dir -e .
