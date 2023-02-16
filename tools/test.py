@@ -21,8 +21,13 @@ import csv
 def parse_args():
     parser = argparse.ArgumentParser(
         description='MMDet test (and eval) a model')
-    parser.add_argument('config', help='test config file path')
-    parser.add_argument('checkpoint', help='checkpoint file')
+
+    parser.add_argument('--model_types',type=str,default='00')
+    parser.add_argument('--allowed_model_types',type=str,default='00,01,02,03,04,05,06,07')
+    parser.add_argument('--input_pic_path',type=str,default='/usr/input_picture')
+    parser.add_argument('--input_txt_path',type=str,default='/usr/input_picture/ImageSets/Main/val_split.txt')
+    # parser.add_argument('config', help='test config file path')
+    # parser.add_argument('checkpoint', help='checkpoint file')
     parser.add_argument('--log_path',type=str,default='/usr/output_dir/')
     parser.add_argument(
         '--work-dir',
@@ -120,7 +125,28 @@ def main():
     if args.out is not None and not args.out.endswith(('.pkl', '.pickle')):
         raise ValueError('The output file must be a pkl file.')
 
-    cfg = Config.fromfile(args.config)
+    def get_config_cpt_path(args):
+        config_paths = []
+        cpt_paths = []
+        model_types = args.model_types.split(',')
+        allowed_model_types = args.allowed_model_types.split(',')
+        allowed_name = {'00':'jichu','01':'ganta','02':'daodixian','03':'jueyuanzi','04':'jinju','05':'jiedizhuangzhi','06':'tongdaohuanjing','07':'fushusheshi'}
+        for x in model_types:
+            if x not in allowed_model_types:
+                raise ValueError('Not support for {} type'.format(x))
+        
+            config_paths.append('configs/SG5/{}/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_{}.py'.format(allowed_name[x],allowed_name[x]))
+            cpt_paths.append('work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_{}/epoch_9.pth'.format(allowed_name[x]))
+        return config_paths, cpt_paths
+
+    config_paths, cpt_paths = get_config_cpt_path(args)
+
+    #TODO support for muilt-type test
+    if not len(config_paths) == len(cpt_paths) == 1:
+        raise NotImplementedError
+
+    cfg = Config.fromfile(config_paths[0])
+
     if args.cfg_options is not None:
         cfg.merge_from_dict(args.cfg_options)
     # import modules from string list.
@@ -176,6 +202,9 @@ def main():
         json_file = osp.join(args.work_dir, f'eval_{timestamp}.json')
 
     # build the dataloader
+    cfg.data.test['ann_file'] = args.input_txt_path
+    cfg.data.test['img_prefix'] = args.input_pic_path
+
     dataset = build_dataset(cfg.data.test)
     data_loader = build_dataloader(
         dataset,
@@ -191,8 +220,8 @@ def main():
     if fp16_cfg is not None:
         wrap_fp16_model(model)
     
-
-    checkpoint = load_checkpoint(model, args.checkpoint, map_location='cpu')
+    #TODO
+    checkpoint = load_checkpoint(model, cpt_paths[0], map_location='cpu')
     if args.fuse_conv_bn:
         model = fuse_conv_bn(model)
     # old versions did not save class info in checkpoints, this walkaround is

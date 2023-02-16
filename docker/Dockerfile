@@ -10,8 +10,6 @@ ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 ENV MODEL_TYPES="00,01"
 ENV NMS="0.6"
 ENV SCORE="0.3"
-ENV NUM="100"
-
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/7fa2af80.pub
 
@@ -27,9 +25,11 @@ RUN conda clean --all
 # RUN git clone https://github.com/open-mmlab/mmdetection.git /mmdetection
 RUN git clone https://github.com/wulianjun-112/sgcode2027.git /sgcode
 WORKDIR /sgcode
+COPY /data/taoranyi/temp_for_wulianjun/sgcode2027/work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_daodixian/epoch_9.pth /sgcode/work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_daodixian/
 ENV FORCE_CUDA="1"
 RUN pip install -r requirements/build.txt
 RUN pip install --no-cache-dir -e .
 RUN pwd
 RUN chmod 777 tools/start.sh
+# RUN mkdir -p /usr/local/sgcode/output_dir
 ENTRYPOINT ["tools/start.sh"]
