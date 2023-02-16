@@ -16,13 +16,14 @@ from mmdet.apis import multi_gpu_test, single_gpu_test
 from mmdet.datasets import (build_dataloader, build_dataset,
                             replace_ImageToTensor)
 from mmdet.models import build_detector
-
+import csv
 
 def parse_args():
     parser = argparse.ArgumentParser(
         description='MMDet test (and eval) a model')
     parser.add_argument('config', help='test config file path')
     parser.add_argument('checkpoint', help='checkpoint file')
+    parser.add_argument('--log_path',type=str,default='/usr/output_dir/')
     parser.add_argument(
         '--work-dir',
         help='the directory to save the file containing evaluation metrics')
@@ -211,6 +212,21 @@ def main():
             broadcast_buffers=False)
         outputs = multi_gpu_test(model, data_loader, args.tmpdir,
                                  args.gpu_collect)
+
+    with open(osp.join(args.log_path,'result.csv'),'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(['filename','name','score','xmin','ymin','xmax','ymax'])
+        for img_i in outputs:
+            file_name = img_i[-1]
+            img_i = img_i[:-1]
+            for cls_i,name in zip(img_i,model.module.CLASSES):
+                aa = cls_i[cls_i[:,-1] > args.show_score_thr]
+                aa = aa[:,[4,0,1,2,3]]
+                prit = [(file_name,name,*x) for x in aa]
+                writer.writerows(prit)
+    
+    for i in range(len(outputs)):
+        outputs[i] = outputs[i][:-1]
 
     rank, _ = get_dist_info()
     if rank == 0:

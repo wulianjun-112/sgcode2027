@@ -21,10 +21,13 @@ def single_gpu_test(model,
     model.eval()
     results = []
     dataset = data_loader.dataset
+    file_names = []
     # prog_bar = mmcv.ProgressBar(len(dataset))
     print("Loading Finished\n")
     for i, data in enumerate(data_loader):
-        print("process:{}/{} {}".format(i+1,len(dataset),osp.basename(data['img_metas'][0].data[0][0]['filename'])))
+        file_name = osp.basename(data['img_metas'][0].data[0][0]['filename'])
+        file_names.append(file_name)
+        print("process:{}/{} {}".format(i+1,len(dataset),file_name))
         with torch.no_grad():
             result = model(return_loss=False, rescale=True, **data)
 
@@ -64,6 +67,9 @@ def single_gpu_test(model,
         results.extend(result)
         # for _ in range(batch_size):
             # prog_bar.update()
+
+    for x,y in zip(results,file_names):
+        x.append(y)
     return results
 
 
