@@ -17,19 +17,21 @@ RUN apt-get update && apt-get install -y ffmpeg libsm6 libxext6 git ninja-build 
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install MMCV
-RUN pip install mmcv-full==1.3.8 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.6.0/index.html
+RUN git clone https://github.com/wulianjun-112/sgcode2027.git /sgcode
+WORKDIR /sgcode
 
+# Install MMCV
+RUN pip install torch==1.7.0+cu101 torchvision==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip install mmcv-full==1.3.8 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 # Install MMDetection
 RUN conda clean --all
 # RUN git clone https://github.com/open-mmlab/mmdetection.git /mmdetection
-RUN git clone https://github.com/wulianjun-112/sgcode2027.git /sgcode
-WORKDIR /sgcode
-COPY /data/taoranyi/temp_for_wulianjun/sgcode2027/work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_daodixian/epoch_9.pth /sgcode/work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_daodixian/
+COPY /work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_daodixian/epoch_9.pth /sgcode/work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_daodixian/
 ENV FORCE_CUDA="1"
 RUN pip install -r requirements/build.txt
 RUN pip install --no-cache-dir -e .
-RUN pwd
 RUN chmod 777 tools/start.sh
+RUN apt update
+RUN apt install vim -y
 # RUN mkdir -p /usr/local/sgcode/output_dir
 ENTRYPOINT ["tools/start.sh"]

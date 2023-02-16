@@ -3,7 +3,7 @@ import os
 import os.path as osp
 import time
 import warnings
-
+from loguru import logger
 import mmcv
 import torch
 from mmcv import Config, DictAction
@@ -17,7 +17,7 @@ from mmdet.datasets import (build_dataloader, build_dataset,
                             replace_ImageToTensor)
 from mmdet.models import build_detector
 import csv
-
+import sys
 def parse_args():
     parser = argparse.ArgumentParser(
         description='MMDet test (and eval) a model')
@@ -28,7 +28,7 @@ def parse_args():
     parser.add_argument('--input_txt_path',type=str,default='/usr/input_picture/ImageSets/Main/val_split.txt')
     # parser.add_argument('config', help='test config file path')
     # parser.add_argument('checkpoint', help='checkpoint file')
-    parser.add_argument('--log_path',type=str,default='/usr/output_dir/')
+    parser.add_argument('--output_dir',type=str,default='/usr/output_dir/')
     parser.add_argument(
         '--work-dir',
         help='the directory to save the file containing evaluation metrics')
@@ -108,11 +108,9 @@ def parse_args():
         args.eval_options = args.options
     return args
 
-
+@logger.catch
 def main():
     args = parse_args()
-    from pdb import set_trace
-    set_trace()
     assert args.out or args.eval or args.format_only or args.show \
         or args.show_dir, \
         ('Please specify at least one operation (save/eval/format/show the '
@@ -281,6 +279,52 @@ def main():
             if args.work_dir is not None and rank == 0:
                 mmcv.dump(metric_dict, json_file)
 
-
 if __name__ == '__main__':
-    main()
+
+    def ensure_dir(path: str):
+        """create directories if *path* does not exist"""""
+        if not os.path.isdir(path):
+            os.makedirs(path, exist_ok=True)
+
+    def setup_logger(output=None, distributed_rank=0,logger_name="log.txt"):
+        """
+        Initialize the cvpods logger and set its verbosity level to "INFO".
+
+        Args:
+            output (str): a file name or a directory to save log. If None, will not save log file.
+                If ends with ".txt" or ".log", assumed to be a file name.
+                Otherwise, logs will be saved to `output/log.txt`.
+
+        Returns:
+            logging.Logger: a logger
+        """
+        logger.remove()
+        loguru_format = (
+            "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | "
+            "<level>{message}</level>"
+        )
+
+        # stdout logging: master only
+        if distributed_rank == 0:
+            logger.add(sys.stderr, format=loguru_format)
+
+        # file logging: all workers
+        if output is not None:
+            if output.endswith(".txt") or output.endswith(".log"):
+                filename = output
+            else:
+                assert logger_name.endswith('.txt')
+                filename = os.path.join(output, logger_name)
+            if distributed_rank > 0:
+                filename = filename + ".rank{}".format(distributed_rank)
+            ensure_dir(os.path.dirname(filename))
+            logger.add(filename)
+        
+        
+
+
+    args = parse_args()
+    os.makedirs(args.output_dir,exist_ok=True)
+
+    setup_logger(output=args.output_dir, distributed_rank=0)
+    main(args)
