@@ -318,7 +318,7 @@ if __name__ == '__main__':
             if distributed_rank > 0:
                 filename = filename + ".rank{}".format(distributed_rank)
             ensure_dir(os.path.dirname(filename))
-            logger.add(filename)
+            logger.add(filename, filter=lambda x: "·" in x['message'])
         
         
 

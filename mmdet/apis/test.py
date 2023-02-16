@@ -12,7 +12,6 @@ from mmcv.runner import get_dist_info
 
 from mmdet.core import encode_mask_results
 from loguru import logger
-logger_b = logger.bind(name="log")
 
 def single_gpu_test(model,
                     data_loader,
@@ -24,12 +23,12 @@ def single_gpu_test(model,
     dataset = data_loader.dataset
     file_names = []
     # prog_bar = mmcv.ProgressBar(len(dataset))
-    logger_b.info("Loading Finished")
+    logger.info("Loading·Finished")
     
     for i, data in enumerate(data_loader):
         file_name = osp.basename(data['img_metas'][0].data[0][0]['filename'])
         file_names.append(file_name)
-        logger_b.info("process:{}/{} {}".format(i+1,len(dataset),file_name))
+        logger.info("process:{}/{}·{}".format(i+1,len(dataset),file_name))
         with torch.no_grad():
             result = model(return_loss=False, rescale=True, **data)
 
@@ -72,6 +71,7 @@ def single_gpu_test(model,
 
     for x,y in zip(results,file_names):
         x.append(y)
+    logger.info("---process·complete---")
     return results
 
 

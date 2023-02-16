@@ -6,5 +6,5 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 if [ ! -x /usr/output_dir/ ]; then
 mkdir /usr/output_dir/
 fi
-python -u tools/test.py --model_types $MODEL_TYPES --log_path /usr/output_dir/ --show-score-thr $SCORE --eval mAP > /usr/output_dir/test.log
+python -u tools/test.py --model_types $MODEL_TYPES --output_dir /usr/output_dir/ --show-score-thr $SCORE --eval mAP > /usr/output_dir/test.log
 /bin/bash
