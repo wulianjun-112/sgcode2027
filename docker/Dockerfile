@@ -33,5 +33,6 @@ RUN pip install --no-cache-dir -e .
 RUN chmod 777 tools/start.sh
 RUN apt update
 RUN apt install vim -y
+RUN pip install loguru
 # RUN mkdir -p /usr/local/sgcode/output_dir
 ENTRYPOINT ["tools/start.sh"]
