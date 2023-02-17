@@ -366,8 +366,8 @@ def eval_map(det_results,
         # calculate recall and precision with tp and fp
         tp = np.cumsum(tp, axis=1)
         fp = np.cumsum(fp, axis=1)
-        tps.append(tp[0,-1])
-        fps.append(fp[0,-1])
+        tps.append(tp[0,-1] if len(tp[0]) != 0 else 0)
+        fps.append(fp[0,-1] if len(fp[0]) != 0 else 0)
         num_gts_all.append(num_gts)
         eps = np.finfo(np.float32).eps
         recalls = tp / np.maximum(num_gts[:, np.newaxis], eps)

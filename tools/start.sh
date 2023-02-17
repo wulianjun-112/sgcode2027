@@ -7,4 +7,5 @@ if [ ! -x /usr/output_dir/ ]; then
 mkdir /usr/output_dir/
 fi
 python -u tools/test.py --model_types $MODEL_TYPES --output_dir /usr/output_dir/ --show-score-thr $SCORE --eval mAP > /usr/output_dir/test.log
+# docker rm -f  `docker ps -aqf "ancestor=sgcode:20230216"`
 /bin/bash

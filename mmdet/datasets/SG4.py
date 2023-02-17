@@ -2,7 +2,6 @@
 from collections import OrderedDict
 import os
 import os.path as osp
-from re import S
 from mmcv.utils import print_log
 import xml.etree.ElementTree as ET
 from mmdet.core import eval_map, eval_recalls
@@ -11,11 +10,12 @@ from .xml_style import XMLDataset
 import numpy as np
 from tqdm import tqdm
 import xml.etree.ElementTree as ET
-
+import psutil
 import mmcv
 import numpy as np
 from PIL import Image
-
+from loguru import logger
+import json
 def get_gtbbox_scale(gtbbox):
     return (gtbbox[:,3]-gtbbox[:,1])*(gtbbox[:,2]-gtbbox[:,0])
 
@@ -24,6 +24,7 @@ def get_gtbbox_scale(gtbbox):
 class SG4(XMLDataset):
 
     def __init__(self, val_classes,merge_label=None,**kwargs):
+
         super(SG4, self).__init__(**kwargs)
         self.year = 2021
 
@@ -270,38 +271,74 @@ class SG4(XMLDataset):
         Returns:
             list[dict]: Annotation info from XML file.
         """
-
+        
         data_infos = []
-        img_ids = mmcv.list_from_file(ann_file)
-        # par = tqdm(img_ids)
-        for img_id in img_ids:
+        if ann_file.endswith('.json'):
+            assert self.test_mode 
+            with open(ann_file,'r') as f:
+                pictureName = json.load(f)
+
+            img_ids = []
+            for x in pictureName:
+                img_ids.append(x["fileName"])
+
+            ## with ext(.jpg .JPG ...)
             
-            if not osp.exists(osp.join(self.img_prefix, self.sub_jpg,'{}.jpg'.format(img_id))):
-                filename = f'{self.extra_jpg}/{img_id}.jpg'
-            else:
-                filename = f'{self.sub_jpg}/{img_id}.jpg'
-            xml_path = osp.join(self.img_prefix, self.sub_ann,
-                                f'{img_id}.xml')
-            tree = ET.parse(xml_path)
+            for img_id in img_ids:
+                filename = osp.join(self.img_prefix,img_id)
+                
+                if self.load_in_cache:
+                    currut_mem = psutil.Process(os.getpid()).memory_info().rss /1024 / 1024
+                    logger.info('Loading images into cache. Mem Used {}MB/{}MB'.format(int(currut_mem),self.max_cache))
+                    
+                    # if  currut_mem < self.max_cache:
+                    if  currut_mem < 1300:
+                        img_bytes = self.file_client.get(filename)
+                        img = mmcv.imfrombytes(img_bytes, flag='color')
+                        height,width,_ = img.shape
+                        data_infos.append(
+                            dict(id=img_id, filename=filename, ori_filename=img_id, \
+                                width=width, height=height,group_id=None, \
+                                    img=img,img_shape=img.shape,ori_shape=img.shape))
+                        continue
 
-            root = tree.getroot()
+                data_infos.append(
+                            dict(id=img_id, filename=filename, ori_filename=img_id, \
+                                width=None, height=None,group_id=None, \
+                                    img=None,img_shape=None,ori_shape=None))
 
-            if len(root.findall('object')) ==0:
-                group_id = 1
-            else:
-                group_id = 0
+                
+        else:
+            img_ids = mmcv.list_from_file(ann_file)
+            # par = tqdm(img_ids)
+            for img_id in img_ids:
+                
+                if not osp.exists(osp.join(self.img_prefix, self.sub_jpg,'{}.jpg'.format(img_id))):
+                    filename = f'{self.extra_jpg}/{img_id}.jpg'
+                else:
+                    filename = f'{self.sub_jpg}/{img_id}.jpg'
+                xml_path = osp.join(self.img_prefix, self.sub_ann,
+                                    f'{img_id}.xml')
+                tree = ET.parse(xml_path)
 
-            size = root.find('size')
-            if size is not None:
-                width = int(size.find('width').text)
-                height = int(size.find('height').text)
-            else:
-                img_path = osp.join(self.img_prefix, self.sub_jpg,
-                                    '{}.jpg'.format(img_id))
-                img = Image.open(img_path)
-                width, height = img.size
-            data_infos.append(
-                dict(id=img_id, filename=filename, width=width, height=height,group_id=group_id))
+                root = tree.getroot()
+
+                if len(root.findall('object')) ==0:
+                    group_id = 1
+                else:
+                    group_id = 0
+
+                size = root.find('size')
+                if size is not None:
+                    width = int(size.find('width').text)
+                    height = int(size.find('height').text)
+                else:
+                    img_path = osp.join(self.img_prefix, self.sub_jpg,
+                                        '{}.jpg'.format(img_id))
+                    img = Image.open(img_path)
+                    width, height = img.size
+                data_infos.append(
+                    dict(id=img_id, filename=filename, width=width, height=height,group_id=group_id))
 
         return data_infos
 

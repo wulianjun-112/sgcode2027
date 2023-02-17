@@ -61,6 +61,8 @@ class CustomDataset(Dataset):
                  img_prefix='',
                  seg_prefix=None,
                  proposal_file=None,
+                 load_in_cache=True,
+                 max_cache=20*1024,
                  test_mode=False,
                  filter_empty_gt=True,
                  sub_ann='Annotations', 
@@ -78,12 +80,18 @@ class CustomDataset(Dataset):
         self.test_mode = test_mode
         self.filter_empty_gt = filter_empty_gt
         self.CLASSES = self.get_classes(classes)
-
+        self.load_in_cache = load_in_cache
+        self.max_cache = max_cache
+        if self.load_in_cache:
+            file_client_args = dict(backend='disk')
+            self.file_client = mmcv.FileClient(**file_client_args)
+            assert self.test_mode
         # join paths if data_root is specified
 
         if self.data_root is not None:
             if not osp.isabs(self.ann_file):
                 self.ann_file = osp.join(self.data_root, self.ann_file)
+
             if not (self.img_prefix is None or osp.isabs(self.img_prefix)):
                 self.img_prefix = osp.join(self.data_root, self.img_prefix)
             if not (self.seg_prefix is None or osp.isabs(self.seg_prefix)):
@@ -242,6 +250,17 @@ class CustomDataset(Dataset):
         results = dict(img_info=img_info)
         if self.proposals is not None:
             results['proposals'] = self.proposals[idx]
+
+        results['filename'] = img_info['filename']
+        results['ori_filename'] = img_info['ori_filename']
+        if 'img' in img_info and img_info['img'] is not None:
+            results['img'] = img_info['img']
+            results['img_fields'] = ['img']
+        if 'img_shape' in img_info and img_info['img_shape'] is not None:
+            results['img_shape'] = img_info['img_shape']
+        if 'ori_shape' in img_info and img_info['ori_shape'] is not None:
+            results['ori_shape'] = img_info['ori_shape']
+
         self.pre_pipeline(results)
         return self.pipeline(results)
 

@@ -9,7 +9,8 @@ import torch
 import torch.distributed as dist
 from mmcv.image import tensor2imgs
 from mmcv.runner import get_dist_info
-
+import psutil
+import os
 from mmdet.core import encode_mask_results
 from loguru import logger
 
@@ -23,15 +24,19 @@ def single_gpu_test(model,
     dataset = data_loader.dataset
     file_names = []
     # prog_bar = mmcv.ProgressBar(len(dataset))
-    logger.info("Loading·Finished")
+    logger.info("Loading Finished")
+    print("Loading Finished")
     
     for i, data in enumerate(data_loader):
         file_name = osp.basename(data['img_metas'][0].data[0][0]['filename'])
         file_names.append(file_name)
-        logger.info("process:{}/{}·{}".format(i+1,len(dataset),file_name))
+        logger.info("process:{}/{} {}".format(i+1,len(dataset),file_name))
+        print("process:{}/{} {}".format(i+1,len(dataset),file_name))
         with torch.no_grad():
             result = model(return_loss=False, rescale=True, **data)
-
+        
+        # currut_mem = psutil.Process(os.getpid()).memory_info().rss /1024 / 1024
+        # logger.info('Mem Used {}MB'.format(int(currut_mem)))
         batch_size = len(result)
         if show or out_dir:
             if batch_size == 1 and isinstance(data['img'][0], torch.Tensor):
@@ -71,7 +76,8 @@ def single_gpu_test(model,
 
     for x,y in zip(results,file_names):
         x.append(y)
-    logger.info("---process·complete---")
+    logger.info("---process complete---")
+    print("---process complete---")
     return results
 
 

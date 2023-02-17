@@ -46,6 +46,9 @@ class LoadImageFromFile:
         Returns:
             dict: The dict contains loaded image and meta information.
         """
+        
+        if 'img' in results and results['img'] is not None:
+            return results
 
         if self.file_client is None:
             self.file_client = mmcv.FileClient(**self.file_client_args)

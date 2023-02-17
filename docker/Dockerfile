@@ -22,7 +22,7 @@ WORKDIR /sgcode
 
 # Install MMCV
 RUN pip install torch==1.7.0+cu101 torchvision==0.8.0 -f https://download.pytorch.org/whl/torch_stable.html
-RUN pip install mmcv-full==1.3.8 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
+RUN pip install mmcv-full==1.4.0 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 # Install MMDetection
 RUN conda clean --all
 # RUN git clone https://github.com/open-mmlab/mmdetection.git /mmdetection
@@ -33,6 +33,5 @@ RUN pip install --no-cache-dir -e .
 RUN chmod 777 tools/start.sh
 RUN apt update
 RUN apt install vim -y
-RUN pip install loguru
 # RUN mkdir -p /usr/local/sgcode/output_dir
 ENTRYPOINT ["tools/start.sh"]

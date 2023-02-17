@@ -134,7 +134,7 @@ model = dict(
 
 # dataset settings
 # train_class = ['引流线松股','导线本体异物','普通地线锈蚀']
-train_class = ['线松股','线异物','线断股','线损伤']
+train_class = ['020000031','020000111','020000011','020000021']
 sub_dataset_name = '导地线'
 
 val_classes = train_class

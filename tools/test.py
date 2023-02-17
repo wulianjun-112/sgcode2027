@@ -18,6 +18,12 @@ from mmdet.datasets import (build_dataloader, build_dataset,
 from mmdet.models import build_detector
 import csv
 import sys
+import json
+
+'''
+CUDA_VISIBLE_DEVICES=2 python tools/test.py --model_types 03 --input_pic_path /data/taoranyi/temp_for_wulianjun/datasets/SG5/导地线/JPEGImages --input_pic_json /data/taoranyi/temp_for_wulianjun/datasets/SG5/导地线/pictureName.json --output_dir /data/taoranyi/temp_for_wulianjun/sgcode2027/output_dir/ --eval mAP
+'''
+
 def parse_args():
     parser = argparse.ArgumentParser(
         description='MMDet test (and eval) a model')
@@ -25,14 +31,12 @@ def parse_args():
     parser.add_argument('--model_types',type=str,default='00')
     parser.add_argument('--allowed_model_types',type=str,default='00,01,02,03,04,05,06,07')
     parser.add_argument('--input_pic_path',type=str,default='/usr/input_picture')
-    parser.add_argument('--input_txt_path',type=str,default='/usr/input_picture/ImageSets/Main/val_split.txt')
-    # parser.add_argument('config', help='test config file path')
-    # parser.add_argument('checkpoint', help='checkpoint file')
+    parser.add_argument('--input_pic_json',type=str,default='/usr/input_picture_attach/pictureName.json')
     parser.add_argument('--output_dir',type=str,default='/usr/output_dir/')
     parser.add_argument(
         '--work-dir',
         help='the directory to save the file containing evaluation metrics')
-    parser.add_argument('--out', help='output result file in pickle format')
+    parser.add_argument('--out',action='store_true',help='output result file in csv file')
     parser.add_argument(
         '--fuse-conv-bn',
         action='store_true',
@@ -119,8 +123,8 @@ def main(args):
     if args.eval and args.format_only:
         raise ValueError('--eval and --format_only cannot be both specified')
 
-    if args.out is not None and not args.out.endswith(('.pkl', '.pickle')):
-        raise ValueError('The output file must be a pkl file.')
+    # if args.out is not None and not args.out.endswith(('.pkl', '.pickle')):
+        # raise ValueError('The output file must be a pkl file.')
 
     def get_config_cpt_path(args):
         config_paths = []
@@ -198,9 +202,21 @@ def main(args):
         timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
         json_file = osp.join(args.work_dir, f'eval_{timestamp}.json')
 
-    # build the dataloader
-    cfg.data.test['ann_file'] = args.input_txt_path
+
+    assert os.path.exists(args.input_pic_json) , 'Can not find pictureName.json !'
+    with open(args.input_pic_json,'r') as f:
+        pictureName = json.load(f)
+
+    ori_fileName = []
+    for x in pictureName:
+        ori_fileName.append(x["ori_fileName"])
+
+
     cfg.data.test['img_prefix'] = args.input_pic_path
+    cfg.data.test['ann_file'] = args.input_pic_json
+    
+
+    # build the dataloader
 
     dataset = build_dataset(cfg.data.test)
     data_loader = build_dataloader(
@@ -218,16 +234,19 @@ def main(args):
         wrap_fp16_model(model)
     
     #TODO
-    checkpoint = load_checkpoint(model, cpt_paths[0], map_location='cpu')
+    # checkpoint = load_checkpoint(model, cpt_paths[0], map_location='cpu')
+    checkpoint = load_checkpoint(model, '/data/taoranyi/temp_for_wulianjun/sgcode2027/docker/work_dirs/cascade_rcnn_cbv2d1_r2_101_mdconv_fpn_1x_fp16_SG5_daodixian/epoch_9.pth', map_location='cpu')
+    
     if args.fuse_conv_bn:
         model = fuse_conv_bn(model)
     # old versions did not save class info in checkpoints, this walkaround is
     # for backward compatibility
+
     if 'CLASSES' in checkpoint.get('meta', {}):
         model.CLASSES = checkpoint['meta']['CLASSES']
     else:
         model.CLASSES = dataset.CLASSES
-
+    
     if not distributed:
         model = MMDataParallel(model, device_ids=[0])
         outputs = single_gpu_test(model, data_loader, args.show, args.show_dir,
@@ -240,26 +259,29 @@ def main(args):
         outputs = multi_gpu_test(model, data_loader, args.tmpdir,
                                  args.gpu_collect)
 
-    with open(osp.join(args.log_path,'result.csv'),'w') as f:
-        writer = csv.writer(f)
-        writer.writerow(['filename','name','score','xmin','ymin','xmax','ymax'])
-        for img_i in outputs:
-            file_name = img_i[-1]
-            img_i = img_i[:-1]
-            for cls_i,name in zip(img_i,model.module.CLASSES):
-                aa = cls_i[cls_i[:,-1] > args.show_score_thr]
-                aa = aa[:,[4,0,1,2,3]]
-                prit = [(file_name,name,*x) for x in aa]
-                writer.writerows(prit)
-    
-    for i in range(len(outputs)):
-        outputs[i] = outputs[i][:-1]
+
+
 
     rank, _ = get_dist_info()
     if rank == 0:
+
         if args.out:
-            print(f'\nwriting results to {args.out}')
-            mmcv.dump(outputs, args.out)
+            # print(f'\nwriting results to {args.out}')
+            # mmcv.dump(outputs, args.out)
+            with open(osp.join(args.output_dir,'result.csv'),'w') as f:
+                writer = csv.writer(f)
+                writer.writerow(['filename','name','score','xmin','ymin','xmax','ymax'])
+                for img_i in outputs:
+                    file_name = img_i[-1]
+                    img_i = img_i[:-1]
+                    for cls_i,name in zip(img_i,model.module.CLASSES):
+                        aa = cls_i[cls_i[:,-1] > args.show_score_thr]
+                        aa = aa[:,[4,0,1,2,3]]
+                        prit = [(file_name,name,*x) for x in aa]
+                        writer.writerows(prit)
+
+        for i in range(len(outputs)):
+            outputs[i] = outputs[i][:-1]
         kwargs = {} if args.eval_options is None else args.eval_options
         if args.format_only:
             dataset.format_results(outputs, **kwargs)
@@ -280,12 +302,7 @@ def main(args):
 
 if __name__ == '__main__':
 
-    def ensure_dir(path: str):
-        """create directories if *path* does not exist"""""
-        if not os.path.isdir(path):
-            os.makedirs(path, exist_ok=True)
-
-    def setup_logger(output=None, distributed_rank=0,logger_name="log.txt"):
+    def setup_logger(output=None,logger_name="program_log.txt"):
         """
         Initialize the cvpods logger and set its verbosity level to "INFO".
 
@@ -298,32 +315,32 @@ if __name__ == '__main__':
             logging.Logger: a logger
         """
         logger.remove()
-        loguru_format = (
+        loguru_format1 = (
             "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | "
             "<level>{message}</level>"
         )
-
+    #     loguru_format2 = (
+    #     "<green>{time:YYYY-MM-DD HH:mm:ss}</green> | "
+    #     "<level>{level: <8}</level> | "
+    #     "<cyan>{name}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
+    # )
         # stdout logging: master only
-        if distributed_rank == 0:
-            logger.add(sys.stderr, format=loguru_format)
-
+        logger.add(sys.stderr, format=loguru_format1)
+        # logger.add(sys.stderr, format=loguru_format1, filter=lambda x: "·" in x['message'])
         # file logging: all workers
         if output is not None:
-            if output.endswith(".txt") or output.endswith(".log"):
-                filename = output
-            else:
-                assert logger_name.endswith('.txt')
-                filename = os.path.join(output, logger_name)
-            if distributed_rank > 0:
-                filename = filename + ".rank{}".format(distributed_rank)
-            ensure_dir(os.path.dirname(filename))
-            logger.add(filename, filter=lambda x: "·" in x['message'])
-        
-        
+            assert logger_name.endswith('.txt')
+            # assert result_logger.endswith('.txt')
 
+            open(os.path.join(output, logger_name), 'w').close()
+
+            #TODO
+            logger.add(os.path.join(output, logger_name))
+            # logger.add(os.path.join(output, result_logger), filter=lambda x: "·" in x['message'])
 
     args = parse_args()
     os.makedirs(args.output_dir,exist_ok=True)
 
-    setup_logger(output=args.output_dir, distributed_rank=0)
+    setup_logger(output=args.output_dir)
     main(args)
+

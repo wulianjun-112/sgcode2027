@@ -1,0 +1,258 @@
+2023-02-17 20:56:41.511 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1211MB/20480MB
+2023-02-17 20:56:41.688 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1250MB/20480MB
+2023-02-17 20:56:42.010 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.010 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.010 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.010 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.011 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.011 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.011 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.011 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.011 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.011 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.012 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.012 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.012 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.012 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.012 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.012 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.013 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.013 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.013 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.013 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.013 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.013 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.014 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.014 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.014 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.014 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.014 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.014 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.014 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.015 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.015 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.015 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.015 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.015 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.015 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.016 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.016 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.016 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.016 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.016 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.016 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.017 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.017 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.017 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.017 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.017 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.017 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.018 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.018 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.018 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.018 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.018 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.018 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.019 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.019 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.019 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.019 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.019 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.019 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.019 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.020 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.020 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.020 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.020 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.020 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.020 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.021 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.021 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.021 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.021 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.021 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.021 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.022 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.022 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.022 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.022 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.022 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.022 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.023 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.023 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.023 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.023 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.023 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.023 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.024 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.024 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.024 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.024 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.024 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.024 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.024 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.025 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.025 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.025 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.025 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.025 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.025 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.026 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.026 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.026 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.026 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.026 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.026 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.027 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.027 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.027 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.027 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.027 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.027 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.027 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.028 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.028 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.028 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.028 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.028 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.028 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.029 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.029 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.029 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.029 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.029 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.029 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.030 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.030 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.030 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:42.030 | INFO     | mmdet.datasets.SG4:load_annotations:292 - Loading images into cache. Mem Used 1305MB/20480MB
+2023-02-17 20:56:51.090 | INFO     | mmdet.apis.test:single_gpu_test:27 - Loading Finished
+2023-02-17 20:56:51.385 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:1/128 220kV观界2649线_007_地线_大金具_小金具_地线引下线松股.jpg
+2023-02-17 20:56:51.672 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:2/128 110kV中电828线_053_杆塔_右侧地线挂点横担有鸟巢.jpg
+2023-02-17 20:56:51.874 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:3/128 220kV海民26A1线_220kV海民26A1线003#_导地线_左回_架空地线.jpg
+2023-02-17 20:56:52.068 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:4/128 220kV御平46J7线_220kV御平46J7线068_大金具_小金具_地线.jpg
+2023-02-17 20:56:52.250 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:5/128 35kV大桥I377线_026_大金具_小金具_下相小号侧导线侧_防振锤锈蚀.jpg
+2023-02-17 20:56:52.417 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:6/128 110kV黄瑚727线_026_地线_大金具_小金具.jpg
+2023-02-17 20:56:52.585 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:7/128 003611.jpg
+2023-02-17 20:56:52.785 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:8/128 220kV黄阎4682线038#左地线挂点销钉未开口、线夹缺销钉.jpg
+2023-02-17 20:56:52.947 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:9/128 1565500kV堡澜5254线_500kV堡澜5254线#267_中相小号侧导线侧.jpg
+2023-02-17 20:56:53.120 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:10/128 002371.jpg
+2023-02-17 20:56:53.295 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:11/128 003996.jpg
+2023-02-17 20:56:53.629 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:12/128 220kV龙常2E47线016#地线引下线散股、与塔材摩擦.jpg
+2023-02-17 20:56:53.805 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:13/128 3086.jpg
+2023-02-17 20:56:53.972 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:14/128 35kV高城312线_002#_大金具_小金具_上相大号侧导线侧_线夹缺螺母——严重.jpg
+2023-02-17 20:56:54.147 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:15/128 004928.jpg
+2023-02-17 20:56:54.320 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:16/128 220kV吕邢4H85线_220kV吕邢4H85线122#_金具_左回上相_导线侧.jpg
+2023-02-17 20:56:54.495 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:17/128 220kV中邢26U6线_220kV中邢26U6线022#_导地线_左回_架空地线.jpg
+2023-02-17 20:56:54.665 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:18/128 220kV2L05玉甪线_011_右侧地线小号侧地线与塔材摩擦 (2)_out_horiChange.jpg
+2023-02-17 20:56:54.844 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:19/128 220kV双胜2Y18线_220kV双胜2Y18线068_地线_大金具_小金具.jpg
+2023-02-17 20:56:55.019 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:20/128 110kV靖康765线_005_大金具_小金具_中相_线端_导线有异物.jpg
+2023-02-17 20:56:55.194 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:21/128 001824.jpg
+2023-02-17 20:56:55.363 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:22/128 110kV卓曼7W1线_097_地线_大金具_小金具_地线引下线散股-一般缺陷.jpg
+2023-02-17 20:56:55.536 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:23/128 800209.jpg
+2023-02-17 20:56:55.724 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:24/128 响恒2W48线033#上相导线端挂点U型环螺母松动.jpg
+2023-02-17 20:56:55.903 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:25/128 2429.jpg
+2023-02-17 20:56:56.072 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:26/128 794540.jpg
+2023-02-17 20:56:56.245 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:27/128 005682.jpg
+2023-02-17 20:56:56.426 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:28/128 001134.jpg
+2023-02-17 20:56:56.606 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:29/128 005451.jpg
+2023-02-17 20:56:56.783 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:30/128 110kV红匡9HF线_070_金具_右回上相_导线侧_悬垂线夹倾斜.jpg
+2023-02-17 20:56:56.957 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:31/128 110kV万顾47A线_007_地线_大金具_小金具_地线散股.jpg
+2023-02-17 20:56:57.139 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:32/128 110kV匡吕752线支东灶变支线_060-14_架空地线.jpg
+2023-02-17 20:56:57.309 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:33/128 110Kv钟其1号754线_012_大金具_小金具_上相大号侧导线侧_U型挂环销钉未开口.jpg
+2023-02-17 20:56:57.484 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:34/128 002370.jpg
+2023-02-17 20:56:57.649 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:35/128 000890.jpg
+2023-02-17 20:56:57.828 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:36/128 003884.jpg
+2023-02-17 20:56:58.000 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:37/128 220kV杨秦2E43线_005_大金具_小金具_地线.jpg
+2023-02-17 20:56:58.175 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:38/128 220kV姚柳4W43线_011_地线_大金具_小金具悬垂线夹U型螺栓螺母松动.jpg
+2023-02-17 20:56:58.343 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:39/128 005963.jpg
+2023-02-17 20:56:58.517 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:40/128 794145.jpg
+2023-02-17 20:56:58.703 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:41/128 110kV梨罗797线_033-034_导线损伤 (17).jpg
+2023-02-17 20:56:58.870 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:42/128 800037.jpg
+2023-02-17 20:56:59.061 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:43/128 110kV生开743线_014#_地线_大金具_小金具_导线断股.jpg
+2023-02-17 20:56:59.230 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:44/128 110kV艾圩932线_110kV艾圩932线32#_导地线_7.jpg
+2023-02-17 20:56:59.407 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:45/128 002020.jpg
+2023-02-17 20:56:59.581 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:46/128 110kV新花7H04线_059_导地线_小号侧_下相_12异物.jpg
+2023-02-17 20:56:59.751 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:47/128 110kV中萨775线_056_大金具_小金具_上相_线端_异物.jpg
+2023-02-17 20:56:59.923 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:48/128 004851.jpg
+2023-02-17 20:57:00.098 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:49/128 003779.jpg
+2023-02-17 20:57:00.267 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:50/128 110kV桑秦996线_039_大金具_小金具_中相跳线导线侧_悬垂线夹销钉未开口.jpg
+2023-02-17 20:57:00.456 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:51/128 003726.jpg
+2023-02-17 20:57:00.624 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:52/128 201955.jpg
+2023-02-17 20:57:00.798 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:53/128 220kV2L05玉甪线_011_地线_大金具_小金具_地线引下线散股_out_color.jpg
+2023-02-17 20:57:00.968 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:54/128 110kV六瓜763线_025#_大金具_小金具_中相小号侧导线侧_防震锤锈蚀、滑移.jpg
+2023-02-17 20:57:01.143 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:55/128 220kV三六2Y23线_008#_右地线U型螺栓缺销钉.jpg
+2023-02-17 20:57:01.313 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:56/128 000935.jpg
+2023-02-17 20:57:01.489 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:57/128 799929.jpg
+2023-02-17 20:57:01.661 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:58/128 220kV岱潘4925线09#地线防震锤未见铝包带.jpg
+2023-02-17 20:57:01.850 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:59/128 220kV艾洋4W94线_028_导地线散股_导地线_4.jpg
+2023-02-17 20:57:02.022 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:60/128 110kV龙桥933线_110kV龙桥933线016#_导地线散股_导地线_6.jpg
+2023-02-17 20:57:02.186 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:61/128 382500kV涂目5917线_500kV涂目5917线#218_地线.jpg
+2023-02-17 20:57:02.360 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:62/128 220kV洲常4636线_023_导地线_架空地线-导地线-散股.jpg
+2023-02-17 20:57:02.529 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:63/128 000612.jpg
+2023-02-17 20:57:02.697 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:64/128 110kV万顾47A线_067_金具_左回上相小号侧_导地线_异物.jpg
+2023-02-17 20:57:02.866 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:65/128 110kV海新956线_110kV海新956线004#_导地线锈蚀_导地线_7.jpg
+2023-02-17 20:57:03.037 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:66/128 799941.jpg
+2023-02-17 20:57:03.206 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:67/128 500kV新官5K37线_500kV新官5K37线#185_地线_大金具_小金具.jpg
+2023-02-17 20:57:03.367 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:68/128 110kV京象792线_110kV京象792线#1_大金具_小金具_上相大号侧跳线导线侧.jpg
+2023-02-17 20:57:03.543 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:69/128 220kV弶袁2W31线_020_左地线1_大金具_小金具_地线散股.jpg
+2023-02-17 20:57:03.724 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:70/128 220kV陆启2E94线_220kV陆启2E94线#011_导地线_小号侧_25.jpg
+2023-02-17 20:57:03.899 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:71/128 000480.jpg
+2023-02-17 20:57:04.073 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:72/128 005216.jpg
+2023-02-17 20:57:04.244 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:73/128 导地线_18852_35kV华昌3743线_034_大金具_小金具_中相大号侧导线侧引流线松股.jpg
+2023-02-17 20:57:04.414 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:74/128 005306.jpg
+2023-02-17 20:57:04.586 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:75/128 001793.jpg
+2023-02-17 20:57:04.758 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:76/128 000723.jpg
+2023-02-17 20:57:04.928 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:77/128 001412.jpg
+2023-02-17 20:57:05.104 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:78/128 002692.jpg
+2023-02-17 20:57:05.280 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:79/128 003588.jpg
+2023-02-17 20:57:05.439 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:80/128 220kV天齐4986线_220kV天齐4986线007_导地线_右回_架空地线.jpg
+2023-02-17 20:57:05.605 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:81/128 220kV如恒4H49线_012_导地线_右回_架空地线.jpg
+2023-02-17 20:57:05.768 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:82/128 10688.jpg
+2023-02-17 20:57:05.940 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:83/128 220kV胡窦2531线_013_大金具_小金具_上相导线侧_导线断股.jpg
+2023-02-17 20:57:06.121 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:84/128 613500kV岱钟5661线_500kV岱钟5661线#011_地线.jpg
+2023-02-17 20:57:06.293 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:85/128 交流500kV500kV汊王5299线#004--塔材缺螺栓-500kV汊王5299线_004_地线_大金具_小金具.jpg
+2023-02-17 20:57:06.457 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:86/128 001303.jpg
+2023-02-17 20:57:06.633 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:87/128 220kV海舍4H43线_002_地线_大金具_小金具.jpg
+2023-02-17 20:57:06.816 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:88/128 241696.jpg
+2023-02-17 20:57:06.986 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:89/128 110kV银十711线_006_导地线_左回_架空地线_悬垂线夹倾斜.jpg
+2023-02-17 20:57:07.155 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:90/128 110kV京东794线_002_大金具_小金具_上相小号侧导线侧.jpg
+2023-02-17 20:57:07.324 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:91/128 导地线_散股_3632_35kV芳蓉3721线_037_大金具_小金具_中相小号侧导线侧导线散股.jpg
+2023-02-17 20:57:07.488 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:92/128 2025.jpg
+2023-02-17 20:57:07.658 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:93/128 38989.jpg
+2023-02-17 20:57:07.824 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:94/128 220kV中洲26U4线_220kV中洲26U4线062#_导地线_左回_架空地线.jpg
+2023-02-17 20:57:07.997 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:95/128 001549.jpg
+2023-02-17 20:57:08.167 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:96/128 006029.jpg
+2023-02-17 20:57:08.342 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:97/128 220kV胡窦2531线_023_大金具_小金具_中相导线侧_导线有异物.jpg
+2023-02-17 20:57:08.526 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:98/128 799582.jpg
+2023-02-17 20:57:08.712 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:99/128 110kV歌汉7M8线_020#_地线_大金具_小金具_U型挂环锈蚀、螺母平扣缺销钉.jpg
+2023-02-17 20:57:08.921 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:100/128 220kV陆卓4W51线_#016_导地线_17.jpg
+2023-02-17 20:57:09.130 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:101/128 005154.jpg
+2023-02-17 20:57:09.316 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:102/128 002263.jpg
+2023-02-17 20:57:09.514 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:103/128 794120.jpg
+2023-02-17 20:57:09.690 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:104/128 220kV洲丰4H47线109#地线 (1)塔端有鸟巢.jpg
+2023-02-17 20:57:09.864 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:105/128 110kV朱杨823线-003-地线塔端螺栓螺母锈蚀.jpg
+2023-02-17 20:57:10.042 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:106/128 005287.jpg
+2023-02-17 20:57:10.229 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:107/128 110kV常城711线_110kV常城711线043#_导地线_左回_架空地线.jpg
+2023-02-17 20:57:10.403 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:108/128 548.jpg
+2023-02-17 20:57:10.577 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:109/128 110kV佳高7Y1线_022_大金具_小金具_上相跳线导线侧_重锤锈蚀.jpg
+2023-02-17 20:57:10.777 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:110/128 220kV迎李2W80线_迎李#031_导地线_7.jpg
+2023-02-17 20:57:10.949 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:111/128 导地线_18905_35kV运潘3712线_005_大金具_小金具_上相小号侧导线侧导线松股.jpg
+2023-02-17 20:57:11.119 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:112/128 220kV古戚49A3线_220kV古戚49A3线#059_导地线_小号侧_8.jpg
+2023-02-17 20:57:11.292 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:113/128 220kV龙宜4920线054#小号侧A相导线散股.jpg
+2023-02-17 20:57:11.467 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:114/128 220kV通秀2665线_015_导地线_左回_架空地线_松股.jpg
+2023-02-17 20:57:11.638 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:115/128 25223.jpg
+2023-02-17 20:57:11.811 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:116/128 794486.jpg
+2023-02-17 20:57:11.985 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:117/128 110kV子秦8H7线_013_导地线_右回_架空地线.jpg
+2023-02-17 20:57:12.164 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:118/128 220kV刘新2619线_041_导地线_导地线锈蚀.jpg
+2023-02-17 20:57:12.337 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:119/128 006184.jpg
+2023-02-17 20:57:12.511 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:120/128 002151.jpg
+2023-02-17 20:57:12.678 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:121/128 110kV黄瑚727线_043_地线_大金具_小金具_地线引下线松股.jpg
+2023-02-17 20:57:12.845 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:122/128 220kV银三4644线_063_导地线_左回_架空地线.jpg
+2023-02-17 20:57:13.014 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:123/128 110kV万普782扬中支线_010_大金具_小金具_中相小号侧导线侧_耐张线夹缺螺母.jpg
+2023-02-17 20:57:13.181 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:124/128 110kV六洋7M63线_六洋008_大金具_小金具_上相小号侧导线侧_防振锤锈蚀.jpg
+2023-02-17 20:57:13.348 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:125/128 220kV2L05玉甪线_011_导地线架空地线导流线散股一般 (2)_out_color.jpg
+2023-02-17 20:57:13.515 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:126/128 观界2648线007#地线塔身有鸟窝.jpg
+2023-02-17 20:57:13.686 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:127/128 201366.jpg
+2023-02-17 20:57:13.849 | INFO     | mmdet.apis.test:single_gpu_test:33 - process:128/128 110kV九廊7F8线_#061_大金具_小金具_B相大号侧导线侧_引流线松股DJI_0541.jpg
+2023-02-17 20:57:14.129 | INFO     | mmdet.apis.test:single_gpu_test:79 - ---process complete---
